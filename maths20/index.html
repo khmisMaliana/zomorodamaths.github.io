@@ -19,7 +19,8 @@ html{background:var(--bg)}
 body{font-family:'Cairo',sans-serif;background-color:var(--bg);background-image:var(--bgi);background-size:var(--bgs,auto);background-attachment:fixed;color:var(--ink);min-height:100vh;line-height:1.6}
 svg.i{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:-.25em}
 .sym{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.sym span{position:absolute;font:700 3.2rem 'Cairo';opacity:.09;color:var(--accent)}
+.sym span{position:absolute;font:700 3.2rem 'Cairo';opacity:.09;color:var(--accent);animation:fl var(--d,26s) ease-in-out infinite alternate;will-change:transform}
+@keyframes fl{from{transform:translate(0,0) rotate(-10deg)}50%{transform:translate(26px,-34px) rotate(6deg)}to{transform:translate(-22px,30px) rotate(12deg)}}
 .wrap{position:relative;z-index:1;max-width:880px;margin:auto;padding:16px}
 .top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:6px 0 14px}
 .brand{display:flex;align-items:center;gap:10px;font:800 1.1rem var(--fh)}
@@ -86,14 +87,15 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:22px 0 10px
 .tm{font:800 3rem 'Cairo';text-align:center;color:var(--accent2);direction:ltr}
 .row code{font:600 1rem 'Cairo';direction:ltr;color:var(--accent2)}
 [data-theme=neon] body{font-weight:600}[data-theme=neon] .sym span{opacity:.05}
+@media(min-width:900px){.wrap{max-width:none;padding:22px 3cm}.sym span{font-size:5.5rem}.prof .av{width:150px;height:150px}.prof h1{font-size:1.9rem}.prof p{font-size:1.05rem}.count .n{font-size:4.4rem}}
+@media(min-width:1100px){html{font-size:112.5%}.tree{grid-template-columns:repeat(2,1fr);align-items:start}.tree>.lock{grid-column:1/-1}}
 @media(max-width:640px){.hero{grid-template-columns:1fr}.prof .av{width:88px;height:88px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.sym span{animation:none}}
 </style>
 </head>
 <body>
 <div class="sym" aria-hidden="true">
-<span style="top:8%;left:6%">∑</span><span style="top:22%;right:8%">π</span><span style="top:48%;left:12%">∫</span>
-<span style="top:62%;right:14%">√</span><span style="top:80%;left:30%">∞</span><span style="top:36%;left:52%">Δ</span><span style="top:88%;right:6%">θ</span>
+<span style="top:8%;left:6%;--d:26s;animation-delay:0s">∑</span><span style="top:22%;left:82%;--d:31s;animation-delay:-5s">π</span><span style="top:48%;left:12%;--d:24s;animation-delay:-9s">∫</span><span style="top:62%;left:74%;--d:29s;animation-delay:-3s">√</span><span style="top:80%;left:30%;--d:34s;animation-delay:-12s">∞</span><span style="top:36%;left:50%;--d:27s;animation-delay:-7s">Δ</span><span style="top:88%;left:88%;--d:23s;animation-delay:-2s">θ</span><span style="top:14%;left:40%;--d:32s;animation-delay:-14s">≈</span><span style="top:70%;left:52%;--d:28s;animation-delay:-6s">±</span><span style="top:92%;left:8%;--d:30s;animation-delay:-10s">α</span><span style="top:54%;left:92%;--d:25s;animation-delay:-4s">÷</span><span style="top:30%;left:24%;--d:35s;animation-delay:-16s">x²</span>
 </div>
 <div class="wrap">
  <div class="top">
@@ -127,13 +129,13 @@ var CH = { // chapters per year [ar, fr, en]
 };
 // ======================
 var T={
-ar:{brand:'كوكب زمردة للرياضيات',t1:'وردي',t2:'ورق بياني',t3:'نيون',t4:'سبورة',hero:'كل الرياضيات في واجهة واحدة',exam:'يوم متبقٍ على الامتحان',foot:'كوكب زمردة للرياضيات',
+ar:{brand:'كوكب زمردة للرياضيات',t1:'وردي',t2:'ورق بياني',t3:'نيون',t4:'سبورة',hero:'كوكب الرياضيات، بجدارة (20 في الجيب)',exam:'يوم متبقٍ على الامتحان',foot:'كوكب زمردة للرياضيات',
  yr:'سنتك:',lessons:'الدروس',videos:'الفيديوهات',summaries:'الملخصات',exercises:'التمارين',one:{lessons:'الدرس',videos:'الفيديو',summaries:'الملخص',exercises:'التمرين'},
  open:'افتح',soon:'قريبًا إن شاء الله',locked:'هذه السنة مغلقة',lockp:'اشترك في هذه السنة لتفتح دروسها.',sub:'اشترك في هذه السنة',ch:'الفصل'},
-fr:{brand:'Planète Zomorodah – Maths',t1:'Rose',t2:'Papier',t3:'Néon',t4:'Tableau',hero:'Toutes les maths sur une seule page',exam:'jours avant l’examen',foot:'Planète Zomorodah – Maths',
+fr:{brand:'Planète Zomorodah – Maths',t1:'Rose',t2:'Papier',t3:'Néon',t4:'Tableau',hero:'La planète des maths, avec mérite (20 en poche)',exam:'jours avant l’examen',foot:'Planète Zomorodah – Maths',
  yr:'Ton niveau :',lessons:'Cours',videos:'Vidéos',summaries:'Résumés',exercises:'Exercices',one:{lessons:'Cours',videos:'Vidéo',summaries:'Résumé',exercises:'Exercice'},
  open:'Ouvrir',soon:'Bientôt disponible',locked:'Ce niveau est verrouillé',lockp:'Abonne-toi à ce niveau pour accéder à ses cours.',sub:'S’abonner à ce niveau',ch:'Chapitre'},
-en:{brand:'Zomorodah Math Planet',t1:'Rose',t2:'Graph',t3:'Neon',t4:'Chalkboard',hero:'All of mathematics on one page',exam:'days until the exam',foot:'Zomorodah Math Planet',
+en:{brand:'Zomorodah Math Planet',t1:'Rose',t2:'Graph',t3:'Neon',t4:'Chalkboard',hero:'The planet of mathematics, earned with merit (20 in your pocket)',exam:'days until the exam',foot:'Zomorodah Math Planet',
  yr:'Your year:',lessons:'Lessons',videos:'Videos',summaries:'Summaries',exercises:'Exercises',one:{lessons:'Lesson',videos:'Video',summaries:'Summary',exercises:'Exercise'},
  open:'Open',soon:'Coming soon',locked:'This year is locked',lockp:'Subscribe to this year to unlock its lessons.',sub:'Subscribe to this year',ch:'Chapter'}
 };
